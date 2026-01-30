@@ -9,12 +9,14 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:owlready2-visualizer.isActive"
+  ],
   "main": "./extension.js",
   "contributes": {
     "commands": [{
-      "command": "owlready2-visualizer.helloWorld",
-      "title": "Hello World"
+      "command": "owlready2-visualizer.isActive",
+      "title": "Owlready2 Visualizer Activation"
     }]
   },
   "scripts": {

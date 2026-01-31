@@ -1,5 +1,6 @@
 // Imports:
 const vscode = require('vscode');
+const inputValidationExtension = require('./src/inputValidation')
 
 // This method is called when your extension is activated
 /**
@@ -7,7 +8,8 @@ const vscode = require('vscode');
  */
 function activate(context) {
 
-	const disposable = vscode.commands.registerCommand('owlready2-visualizer.isActive', 
+	const disposable = vscode.commands.registerCommand(
+		'owlready2-visualizer.isActive', 
 		function () {
 		// The code you place here will be executed every time your command is executed
 
@@ -20,6 +22,18 @@ function activate(context) {
 
 // This method is called when your extension is deactivated
 function deactivate() {}
+
+const result = validateInput(editor);
+
+if (result.status == 'error') {
+	showError(result.message);
+	return;
+}
+
+if (result.status == 'warning') {
+	showError(result.message);
+}
+
 
 module.exports = {
 	activate,
